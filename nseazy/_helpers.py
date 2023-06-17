@@ -36,8 +36,6 @@ _equity_quote_api = "api/quote-equity?symbol="
 
 _derivative_quote_api = 'api/quote-derivative?symbol='
 
-_option_chain_api = 'option-chain-indices?symbol='
-
 _cookies = get_cookies(_base_api_url)
 
 

@@ -1,5 +1,4 @@
 from nseazy._generate_request import _fetch_data
-from nseazy._instruments import fnolist
 
 def _validate_symbol(symbol):
     symbol = symbol.replace('&','%26')

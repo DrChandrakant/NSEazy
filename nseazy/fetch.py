@@ -2,7 +2,7 @@ import pandas as pd
 from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api
 from nseazy._instruments import _validate_symbol, fnolist
 from nseazy._generate_request import _fetch_data
-from nseazy._arg_validators import _process_kwargs, _validate_vkwargs_dict
+from nseazy._validators import _validate_vkwargs_dict
 
 def nse_quote(symbol,section=""):
     symbol, isDerivative = _validate_symbol(symbol)
@@ -57,10 +57,10 @@ def nse_eq(symbol):
     return rawJson
 
 
-def _valid_addplot_kwargs():
+def _get_quote_parameter():
     vkwargs = {
-        'scatter'     : { 'Default'     : False,
-                          'Description' : "Deprecated.  (Use kwarg `type='scatter' instead.",
+        'Futures'     : { 'Default'     : False,
+                          'Description' : "Is Listed In Derivative Segament ",
                           'Validator'   : lambda value: isinstance(value,bool) },
     }
     _validate_vkwargs_dict(vkwargs)

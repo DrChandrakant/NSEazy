@@ -59,10 +59,10 @@ def make_left_formatter(maxwidth):
 def kwarg_help( func_name=None, kwarg_names=None, sort=False ):
 
     func_kwarg_map = {
-        'make_addplot' : nz._valid_addplot_kwargs,
+        'make_addplot' : nz._get_quote_parameter,
         }
     func_kwarg_aliases = {
-        'addplot'           : nz._valid_addplot_kwargs,
+        'addplot'           : nz._get_quote_parameter,
         }
     
     

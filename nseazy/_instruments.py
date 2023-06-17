@@ -1,12 +1,18 @@
-
 from nseazy._generate_request import _fetch_data
+from nseazy._instruments import fnolist
 
 def _validate_symbol(symbol):
     symbol = symbol.replace('&','%26')
-    return symbol
+
+    if any(x in symbol for x in fnolist()):
+        isDerivative = True
+    else:
+        isDerivative = False
+    
+    return symbol , isDerivative
 
 
-def _validate_derivative():
+def _instrument_derivative():
     positions = _fetch_data('https://www.nseindia.com/api/equity-stockIndices?index=SECURITIES%20IN%20F%26O')
 
     nselist=['NIFTY','NIFTYIT','BANKNIFTY']
@@ -17,4 +23,4 @@ def _validate_derivative():
 
     return nselist
 
-fnolist = _validate_derivative()
+fnolist = _instrument_derivative()

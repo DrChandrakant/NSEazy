@@ -2,7 +2,7 @@ import pandas as pd
 from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api
 from nseazy._instruments import _validate_symbol, fnolist
 from nseazy._generate_request import _fetch_data
-
+from nseazy._arg_validators import _process_kwargs, _validate_vkwargs_dict
 
 def nse_quote(symbol,section=""):
     symbol, isDerivative = _validate_symbol(symbol)
@@ -24,6 +24,44 @@ def nse_optionchain_scrapper(symbol):
     if isDerivative is True:
         rawOptionchain = _fetch_data( _base_api_url + _derivative_quote_api + symbol)
     else:
-        rawptionchain = None
-        raise ValueError("Specified Symbol May Not Be List Under Derivative Segment Available List of Symbol", fnolist)
-    return rawptionchain
+        rawOptionchain = None
+    return rawOptionchain
+
+
+def nse_fno(symbol):
+    symbol, isDerivative = _validate_symbol(symbol)
+    try:
+        rawJson = _fetch_data( _base_api_url + _derivative_quote_api + symbol)
+        try:
+            if(len(rawJson['stocks'])== 0):
+                print(symbol,'May Not Be List In Derivative Segemnt. Trying Fetch Data From Equity Segment')
+                rawJson = _fetch_data( _base_api_url + _equity_quote_api + symbol)
+        except KeyError:
+            pass
+    except KeyError:
+        print("Getting Error While Fetching.")
+    return rawJson
+
+def nse_eq(symbol):
+    symbol, isDerivative = _validate_symbol(symbol)
+    try:
+        rawJson = _fetch_data( _base_api_url + _equity_quote_api + symbol)
+        try:
+            if(len(rawJson['stocks'])== 0):
+                print(symbol,'May Not Be List In Equity Segemnt. Trying Fetch Data From Equity Segment')
+                rawJson = _fetch_data( _base_api_url + _derivative_quote_api + symbol)
+        except KeyError:
+            pass
+    except KeyError:
+        print("Getting Error While Fetching.")
+    return rawJson
+
+
+def _valid_addplot_kwargs():
+    vkwargs = {
+        'scatter'     : { 'Default'     : False,
+                          'Description' : "Deprecated.  (Use kwarg `type='scatter' instead.",
+                          'Validator'   : lambda value: isinstance(value,bool) },
+    }
+    _validate_vkwargs_dict(vkwargs)
+    return vkwargs

@@ -59,7 +59,7 @@ def make_left_formatter(maxwidth):
 def help( func_name=None, kwarg_names=None, sort=False ):
 
     func_kwarg_map = {
-        'make_addplot' : nz.fetch._get_quote_parameter,
+        'get_quote' : nz.fetch._get_quote_parameter,
         }
     func_kwarg_aliases = {
         'addplot'           : nz.fetch._get_quote_parameter,
@@ -129,7 +129,7 @@ def help( func_name=None, kwarg_names=None, sort=False ):
                  }
     
     print('\n ','-'*78)
-    print('  Kwargs for func_name "'+func_name+'":')
+    print('  Following Parameter Can Be Used at "'+func_name+'":')
 
     s = df.to_string(formatters=formatters,index=False,justify='left')
 

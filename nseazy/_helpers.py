@@ -38,6 +38,8 @@ _derivative_quote_api = 'api/quote-derivative?symbol='
 
 _option_chain_api = 'api/option-chain-indices?symbol='
 
+_holidays_api = 'api/holiday-master?type='
+
 _cookies = get_cookies(_base_api_url)
 
 

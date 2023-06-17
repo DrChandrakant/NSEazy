@@ -1,6 +1,6 @@
 import pandas as pd
-from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api
-from nseazy._instruments import _validate_symbol, fnolist
+from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api, _holidays_api
+from nseazy._instruments import _validate_symbol
 from nseazy._generate_request import _fetch_data
 from nseazy._validators import _validate_vkwargs_dict
 
@@ -18,7 +18,6 @@ def nse_quote(symbol,section=""):
         rawJson = _fetch_data( _base_api_url + _equity_quote_api + symbol+'&section='+section)
         return rawJson
     
-
 def nse_optionchain_scrapper(symbol):
     symbol, isDerivative = _validate_symbol(symbol)
     if isDerivative is True:
@@ -26,7 +25,6 @@ def nse_optionchain_scrapper(symbol):
     else:
         rawOptionchain = None
     return rawOptionchain
-
 
 def nse_fno(symbol):
     symbol, isDerivative = _validate_symbol(symbol)
@@ -56,11 +54,28 @@ def nse_eq(symbol):
         print("Getting Error While Fetching.")
     return rawJson
 
+def quote_equity(symbol):
+    return nse_eq(symbol)
+
+def quote_derivative(symbol):
+    return nse_fno(symbol)
+
+def option_chain(symbol):
+    return nse_optionchain_scrapper(symbol)
+
+def nse_holidays(type="trading"):
+    if(type=="clearing"):
+        rawHoliday = _fetch_data(_base_api_url+_holidays_api + type)
+    if(type=="trading"):
+        rawHoliday = _fetch_data(_base_api_url+_holidays_api + type)
+    return rawHoliday
+
+
 
 def _get_quote_parameter():
     vkwargs = {
         'Futures'     : { 'Default'     : False,
-                          'Description' : "Is Listed In Derivative Segament ",
+                          'Description' : "Is Listed In Derivative Segament. If Listed Set True ",
                           'Validator'   : lambda value: isinstance(value,bool) },
     }
     _validate_vkwargs_dict(vkwargs)

@@ -56,13 +56,13 @@ def make_left_formatter(maxwidth):
             return f'{value:<{w}.{w}s}'
     return left_formatter
 
-def kwarg_help( func_name=None, kwarg_names=None, sort=False ):
+def help( func_name=None, kwarg_names=None, sort=False ):
 
     func_kwarg_map = {
-        'make_addplot' : nz._get_quote_parameter,
+        'make_addplot' : nz.fetch._get_quote_parameter,
         }
     func_kwarg_aliases = {
-        'addplot'           : nz._get_quote_parameter,
+        'addplot'           : nz.fetch._get_quote_parameter,
         }
     
     

@@ -2,7 +2,7 @@ import pandas as pd
 from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api, _holidays_api
 from nseazy._instruments import _validate_symbol
 from nseazy._generate_request import _fetch_data
-from nseazy._validators import _validate_vkwargs_dict
+from nseazy._validators import _validate_vkwargs_dict, _check_kwargs
 
 def nse_quote(symbol,section=""):
     symbol, isDerivative = _validate_symbol(symbol)
@@ -80,3 +80,9 @@ def _get_quote_parameter():
     }
     _validate_vkwargs_dict(vkwargs)
     return vkwargs
+
+def show_data (symbol,**kwargs):
+    config = _check_kwargs(kwargs, _get_quote_parameter())
+    print(config)
+
+    return dict( data=symbol, **config)

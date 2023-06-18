@@ -2,7 +2,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 pkg_location = 'nseazy'
-pkg_name     = 'NSEasy'
+pkg_name     = 'nseasy'
 
 vfile = './'+pkg_location+'/'+pkg_name+'/_version.py'
 vers = {}
@@ -16,7 +16,7 @@ setup(name=pkg_name,
       version=vers['__version__'],
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',
-      maintainer_email='drchandrakant.github@gmail.com',
+      maintainer_email='DrChandrakant.github@gmail.com',
       py_modules=[pkg_name],
       description='Utilities for the NSE India API',
       long_description=long_description,
@@ -33,7 +33,6 @@ setup(name=pkg_name,
                    'Programming Language :: Python :: 3.7',
                    'Programming Language :: Python :: 3.8',
                    'Programming Language :: Python :: 3.9',
-                   'Framework :: Matplotlib',
                    'Intended Audience :: Developers',
                    'Intended Audience :: Education',
                    'Intended Audience :: Financial and Insurance Industry',

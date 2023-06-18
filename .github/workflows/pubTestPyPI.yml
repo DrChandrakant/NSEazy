@@ -19,7 +19,7 @@ jobs:
 
     - name: Display Coded Version 
       #run: git show ${{ github.sha }}:nseazy/_version.py
-      run: egrep 'version_info .*='nseazy/_version.py
+      run: egrep 'version_info .*=' nseazy/_version.py
 
     - name: Set up Python
       uses: actions/setup-python@v4

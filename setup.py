@@ -1,10 +1,10 @@
 from setuptools import setup
 from setuptools import find_packages
 
-pkg_location = ''
-pkg_name     = 'nseasy'
+pkg_location = 'src'
+pkg_name     = 'nseazy'
 
-vfile = vfile = 'nseazy/_version.py'
+vfile = './'+pkg_location+'/'+pkg_name+'/_version.py'
 vers = {}
 with open(vfile) as f:
    exec(f.read(), {}, vers)
@@ -24,8 +24,8 @@ setup(name=pkg_name,
       platforms='Cross platform (Linux, Mac OSX, Windows)',
       install_requires=['pandas'],
       license="BSD-style",
-      package_dir={'': 'NSEazy'},
-      packages=['nseazy']
+      package_dir={'': pkg_location},
+      packages=find_packages(where=pkg_location),
       classifiers=['Development Status :: 4 - Beta',
                    'Programming Language :: Python :: 3',
                    'Programming Language :: Python :: 3.6',

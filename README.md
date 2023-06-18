@@ -32,3 +32,17 @@ The most common usage is then to call
     nse.help('show_data')
 ```
 where the `help` method and `show_data` function for which the user seeks help.
+
+```python
+    data_required = {'Info' : True } # LTP : True By Default
+```
+
+```python
+    nse.show_data('L&T',data_required)
+```
+
+Details on how to call the new API can be found below under **[Basic Usage]()**, as well as in the jupyter notebooks in the **[examples]()** folder.
+
+I am very interested to hear from you regarding what you think of the new NSE API `nseazy`, plus any suggestions you may have for improvement.  You can reach me at **DrChandrakant.github@gmail.com**  or, if you prefer, provide feedback or a ask question on our **[issues page.](https://github.com/DrChandrakant/NSEazy/issues/new/choose)**
+
+---

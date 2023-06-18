@@ -9,7 +9,7 @@ with open('README.md') as f:
     long_description = f.read()
 
 setup(name='NSEazy',
-      version=0.0.1b1,
+      version='0.0.1b1',
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',
       maintainer_email='DrChandrakant.github@gmail.com',

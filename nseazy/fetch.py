@@ -80,7 +80,7 @@ def _get_quote_parameter():
         'Info'      : { 'Default'       : False,
                           'Description' : "If Company Information Required. Set True ",
                           'Validator'   : lambda value: isinstance(value,bool) },
-        'LTP  '     : { 'Default'       : False,
+        'LTP'       : { 'Default'       : True,
                           'Description' : "If Last Traded Price(LTP) Required. Set True ",
                           'Validator'   : lambda value: isinstance(value,bool) },
         'OHLCV'     : { 'Default'       : False,
@@ -104,7 +104,7 @@ def show_data(symbol,kwargs):
     Info   = config['Info']
     OHLCV  = config['OHLCV']
     Popen  = config['Pre']
-    LTP    = config['LTP']
+
 
 
     if Future == True:
@@ -143,7 +143,7 @@ def show_data(symbol,kwargs):
         print(df_info)
     if OHLCV == True:
         print(df_olhc)
-    if LTP == True:
+    if config['LTP'] == True:
         print(ltp)
 
 

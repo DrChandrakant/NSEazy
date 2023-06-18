@@ -4,7 +4,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 setuptools.setup(name='nseazy',
-      version='0.0.1b1',
+      version='0.0.1b2',
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',
       maintainer_email='DrChandrakant.github@gmail.com',

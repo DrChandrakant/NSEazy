@@ -1,7 +1,7 @@
 from setuptools import setup
 from setuptools import find_packages
 
-pkg_location = 'nseazy'
+pkg_location = ''
 pkg_name     = 'nseasy'
 
 vfile = './'+pkg_location+'/'+pkg_name+'/_version.py'

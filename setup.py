@@ -5,6 +5,7 @@ pkg_location = 'src'
 pkg_name     = 'nseazy'
 
 vfile = './'+pkg_location+'/'+pkg_name+'/_version.py'
+print(vfile)
 vers = {}
 with open(vfile) as f:
    exec(f.read(), {}, vers)

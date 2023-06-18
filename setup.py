@@ -2,7 +2,7 @@ from setuptools import setup
 from setuptools import find_packages
 
 pkg_location = 'src'
-pkg_name     = 'nseazy'
+pkg_name     = 'nseazyaaaa'
 
 vfile = './'+pkg_location+'/'+pkg_name+'/_version.py'
 print(vfile)

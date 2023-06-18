@@ -4,17 +4,13 @@ from setuptools import find_packages
 pkg_location = 'src'
 pkg_name     = 'nseazyaaaa'
 
-vfile = './'+pkg_location+'/'+pkg_name+'/_version.py'
-print(vfile)
-vers = {}
-with open(vfile) as f:
-   exec(f.read(), {}, vers)
+
 
 with open('README.md') as f:
     long_description = f.read()
 
 setup(name='NSEazy',
-      version=vers['__version__'],
+      version=0.0.1b1,
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',
       maintainer_email='DrChandrakant.github@gmail.com',

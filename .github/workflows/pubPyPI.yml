@@ -18,7 +18,7 @@ jobs:
         ref:  ${{ github.event.inputs.tag }}
 
     - name: Display Coded Version 
-      run: egrep 'version_info .*=' nseazy/_version.py
+      run: egrep 'version_info .*='/_version.py
 
     - name: Set up Python
       uses: actions/setup-python@v4

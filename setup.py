@@ -3,7 +3,7 @@ import setuptools
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setup(name='nseazy',
+setuptools.setup(name='nseazy',
       version='0.0.1b1',
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',

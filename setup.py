@@ -5,7 +5,6 @@ pkg_location = 'src'
 pkg_name     = 'nseazyaaaa'
 
 
-
 with open('README.md') as f:
     long_description = f.read()
 

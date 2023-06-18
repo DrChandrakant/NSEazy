@@ -1,6 +1,7 @@
 from nseazy._helpers import _headers, _cookies
 import requests
 
+
 method = True
 
 if(method is True):

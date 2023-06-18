@@ -13,7 +13,7 @@ with open(vfile) as f:
 with open('README.md') as f:
     long_description = f.read()
 
-setup(name=pkg_name,
+setup(name='NSEazy',
       version=vers['__version__'],
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',
@@ -26,7 +26,7 @@ setup(name=pkg_name,
       install_requires=['pandas'],
       license="BSD-style",
       package_dir={'': pkg_location+1},
-      packages=find_packages(where=pkg_location),
+      packages=setuptools.find_packages(),
       classifiers=['Development Status :: 4 - Beta',
                    'Programming Language :: Python :: 3',
                    'Programming Language :: Python :: 3.6',

@@ -70,7 +70,7 @@ jobs:
 
       - name: Check that Pull Request includes updating the Version
         run: |
-          git show ${{ github.event.pull_request.base.sha }}:src/nseazy/_version.py > scripts/tv0.py
-          git show ${{ github.sha }}:src/nseazy/_version.py > scripts/tv1.py
+          git show ${{ github.event.pull_request.base.sha }}:nseazy/_version.py > scripts/tv0.py
+          git show ${{ github.sha }}:nseazy/_version.py > scripts/tv1.py
           python scripts/version_update_check.py tv0 tv1
 

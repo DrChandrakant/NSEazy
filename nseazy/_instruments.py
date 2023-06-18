@@ -1,7 +1,7 @@
 from nseazy._generate_request import _fetch_data
 
 def _validate_symbol(symbol):
-    symbol = symbol.replace('&','%26')
+    symbol = symbol.translate({ord('-'): None,ord('&'): None, }).upper()
 
     if any(x in symbol for x in fnolist):
         isDerivative = True

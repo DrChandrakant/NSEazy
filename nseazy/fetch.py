@@ -74,15 +74,76 @@ def nse_holidays(type="trading"):
 
 def _get_quote_parameter():
     vkwargs = {
-        'Futures'     : { 'Default'     : False,
-                          'Description' : "Is Listed In Derivative Segament. If Listed Set True ",
+        'Future'    : { 'Default'       : False,
+                          'Description' : "If Derivative Segment Data Required. Set True ",
                           'Validator'   : lambda value: isinstance(value,bool) },
+        'Info'      : { 'Default'       : False,
+                          'Description' : "If Company Information Required. Set True ",
+                          'Validator'   : lambda value: isinstance(value,bool) },
+        'LTP  '     : { 'Default'       : False,
+                          'Description' : "If Last Traded Price(LTP) Required. Set True ",
+                          'Validator'   : lambda value: isinstance(value,bool) },
+        'OHLCV'     : { 'Default'       : False,
+                          'Description' : "If Open High Low Close and Volumne Data Required. Set True ",
+                          'Validator'   : lambda value: isinstance(value,bool) },
+        'Pre'       : { 'Default'       : False,
+                          'Description' : "If Pre Open Market Data Required. Set True ",
+                          'Validator'   : lambda value: isinstance(value,bool) },     
     }
     _validate_vkwargs_dict(vkwargs)
     return vkwargs
 
-def show_data (symbol,**kwargs):
-    config = _check_kwargs(kwargs, _get_quote_parameter())
-    print(config)
+def show_data(symbol,kwargs):
 
-    return dict( data=symbol, **config)
+    symbol, isDerivative = _validate_symbol(symbol)
+
+    config = _check_kwargs(kwargs, _get_quote_parameter())
+
+
+    Future = config['Future']
+    Info   = config['Info']
+    OHLCV  = config['OHLCV']
+    Popen  = config['Pre']
+    LTP    = config['LTP']
+
+
+    if Future == True:
+        data = quote_derivative(symbol)
+        print(data)
+    
+    if Future == False:
+        data = quote_equity(symbol)
+        company_info = {
+            'Name'          : data['info']['companyName'],
+            'Symbol'        : data['info']['symbol'],
+            'Sector'        : data['info']['industry'],
+            'ISIN'          : data['metadata']['isin'],
+            'Sector PE'     : data['metadata']['pdSectorPe'],
+            'PE'            : data['metadata']['pdSymbolPe'],
+            'Index'         : data['metadata']['pdSectorInd'],
+            'Face Value'    : data['securityInfo']['faceValue'],
+            'Total Equity'  : data['securityInfo']['issuedSize']
+        }
+        olhc = {
+            'Open'         : data['priceInfo']['open'],
+            'LTP'          : data['priceInfo']['lastPrice'],
+            'Change'       : data['priceInfo']['change'],
+            '% Chg'        : round(data['priceInfo']['pChange'],2),
+            'Final Close'  : data['priceInfo']['close'],
+            'Previous'     : data['priceInfo']['previousClose'],
+            'VWAP'         : data['priceInfo']['vwap'],
+            'Lower Circuit': data['priceInfo']['lowerCP'],
+            'Upper Circuit': data['priceInfo']['upperCP'],
+        }
+
+        df_info = pd.DataFrame([company_info])
+        df_olhc = pd.DataFrame([olhc])
+        ltp =  data['priceInfo']['lastPrice']
+    if Info == True:
+        print(df_info)
+    if OHLCV == True:
+        print(df_olhc)
+    if LTP == True:
+        print(ltp)
+
+

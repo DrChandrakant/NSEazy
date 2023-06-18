@@ -59,7 +59,7 @@ def make_left_formatter(maxwidth):
 def help( func_name=None, kwarg_names=None, sort=False ):
 
     func_kwarg_map = {
-        'get_quote' : nz.fetch._get_quote_parameter,
+        'show_data'         : nz.fetch._get_quote_parameter,
         }
     func_kwarg_aliases = {
         'addplot'           : nz.fetch._get_quote_parameter,

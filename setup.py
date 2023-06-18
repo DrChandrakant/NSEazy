@@ -1,14 +1,9 @@
-from setuptools import setup
-from setuptools import find_packages
+import setuptools
 
-pkg_location = 'src'
-pkg_name     = 'nseazyaaaa'
+with open("README.md", "r") as fh:
+    long_description = fh.read()
 
-
-with open('README.md') as f:
-    long_description = f.read()
-
-setup(name='NSEazy',
+setup(name='nseazy',
       version='0.0.1b1',
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',

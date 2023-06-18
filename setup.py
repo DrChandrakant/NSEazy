@@ -4,7 +4,7 @@ from setuptools import find_packages
 pkg_location = ''
 pkg_name     = 'nseasy'
 
-vfile = vfile = './'+pkg_name+''/_version.py'
+vfile = vfile = 'nseazy/_version.py'
 vers = {}
 with open(vfile) as f:
    exec(f.read(), {}, vers)

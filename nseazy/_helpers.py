@@ -38,6 +38,8 @@ _option_chain_api = 'api/option-chain-indices?symbol='
 
 _holidays_api = 'api/holiday-master?type='
 
+_historical_api = 'api/historical/cm/equity?symbol='
+
 _cookies = get_cookies(_base_api_url)
 
 

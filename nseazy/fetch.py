@@ -1,8 +1,9 @@
 import pandas as pd
-from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api, _holidays_api
+from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api, _holidays_api, _historical_api
 from nseazy._instruments import _validate_symbol
 from nseazy._generate_request import _fetch_data
-from nseazy._validators import _validate_vkwargs_dict, _check_kwargs
+from nseazy._validators import _validate_vkwargs_dict, _check_kwargs, _checkDateFormat
+from datetime import date,timedelta
 
 def nse_quote(symbol,section=""):
     symbol, isDerivative = _validate_symbol(symbol)
@@ -70,7 +71,13 @@ def nse_holidays(type="trading"):
         rawHoliday = _fetch_data(_base_api_url+_holidays_api + type)
     return rawHoliday
 
-
+def historical_data(symbol,series,start_date,end_date):
+    rawHistorical = _fetch_data(_base_api_url + _historical_api + symbol + '&series=["' + series + '"]&from=' + start_date + '&to=' + end_date )['data']
+    rawHistorical_tdp = pd.DataFrame(rawHistorical)
+    rawHistorical_dp = rawHistorical_tdp[['CH_TIMESTAMP','CH_OPENING_PRICE','CH_TRADE_HIGH_PRICE','CH_TRADE_LOW_PRICE','CH_CLOSING_PRICE','CH_TOT_TRADED_QTY']].copy()
+    rawHistorical_dp.columns = ['Date', 'Open', 'High','Low','Close','Volume']
+    final = rawHistorical_dp.reindex(index=rawHistorical_dp.index[::-1]).set_index('Date')
+    return final
 
 def _get_quote_parameter():
     vkwargs = {
@@ -80,7 +87,7 @@ def _get_quote_parameter():
         'Info'      : { 'Default'       : False,
                           'Description' : "If Company Information Required. Set True ",
                           'Validator'   : lambda value: isinstance(value,bool) },
-        'LTP'       : { 'Default'       : True,
+        'LTP'       : { 'Default'       : False,
                           'Description' : "If Last Traded Price(LTP) Required. Set True ",
                           'Validator'   : lambda value: isinstance(value,bool) },
         'OHLCV'     : { 'Default'       : False,
@@ -88,7 +95,13 @@ def _get_quote_parameter():
                           'Validator'   : lambda value: isinstance(value,bool) },
         'Pre'       : { 'Default'       : False,
                           'Description' : "If Pre Open Market Data Required. Set True ",
-                          'Validator'   : lambda value: isinstance(value,bool) },     
+                          'Validator'   : lambda value: isinstance(value,bool) },
+        'Start'     : { 'Default'       : None,
+                          'Description' : "Start Date From Historial Data Required",
+                          'Validator'   : lambda value: isinstance(value,(str)) },
+        'End'       : { 'Default'       : None,
+                          'Description' : "End Date Upto Historial Data Required",
+                          'Validator'   : lambda value: isinstance(value,(str)) },
     }
     _validate_vkwargs_dict(vkwargs)
     return vkwargs
@@ -142,7 +155,20 @@ def show_data(symbol,kwargs):
     if Info == True:
         print(df_info)
     if OHLCV == True:
-        print(df_olhc)
+        series = 'EQ'
+        if config['Start'] is None:
+            start_date = (date.today() - timedelta(days=4)).strftime("%d-%m-%Y")
+        else:
+            start_date = _checkDateFormat(config['Start'])
+            print(start_date)
+        if config['End'] is None:
+            end_date = (date.today() - timedelta(days=3)).strftime("%d-%m-%Y")
+        else:
+            end_date = _checkDateFormat(config['End'])
+            print(end_date)
+        ohlc_df = historical_data(symbol,series,start_date,end_date)
+        print(ohlc_df)
+
     if config['LTP'] == True:
         print(ltp)
 

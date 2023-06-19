@@ -1,4 +1,6 @@
 
+from datetime import datetime
+
 def _validate_vkwargs_dict(vkwargs):
 
     for key, value in vkwargs.items():
@@ -37,3 +39,14 @@ def _check_kwargs(kwargs, vkwargs):
         config[key] = value
 
     return config
+
+
+
+def _checkDateFormat(date_string):
+    format_string = "%d-%m-%Y"
+    try:
+        date_object = datetime.strptime(date_string, format_string)
+        formatted_date = date_object.strftime("%d-%m-%Y")
+        return formatted_date
+    except ValueError:
+        print("Please Provide Date With Format DD-MM-YYYY.")

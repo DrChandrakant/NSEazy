@@ -40,6 +40,64 @@ where the `help` method and `show_data` function for which the user seeks help.
 ```python
     nse.show_data('L&T',data_required)
 ```
+```python
+    data_required = {
+        'OHLCV' : True,
+        'Start' : '10-6-2023', # Error month or date 06 or 6 will be corrected automatically
+        'End'   : '19-06-2023' 
+    } # OHLCV : False By Default
+```
+
+```python
+    nse.show_data('TCS',data_required)
+```
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Open</th>
+      <th>High</th>
+      <th>Low</th>
+      <th>Close</th>
+      <th>Volume</th>
+    </tr>
+    <tr>
+      <th>Date</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>2019-11-01</th>
+      <td>3050.72</td>
+      <td>3066.95</td>
+      <td>3050.72</td>
+      <td>3066.91</td>
+      <td>510301237</td>
+    </tr>
+    <tr>
+      <th>2019-11-04</th>
+      <td>3078.96</td>
+      <td>3085.20</td>
+      <td>3074.87</td>
+      <td>3078.27</td>
+      <td>524848878</td>
+    </tr>
+    <tr>
+      <th>2019-11-05</th>
+      <td>3080.80</td>
+      <td>3083.95</td>
+      <td>3072.15</td>
+      <td>3074.62</td>
+      <td>585634570</td>
+    </tr>
+  </tbody>
+</table>
+
 
 Details on how to call the new API can be found below under **[Basic Usage]()**, as well as in the jupyter notebooks in the **[examples]()** folder.
 

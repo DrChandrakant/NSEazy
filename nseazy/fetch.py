@@ -1,9 +1,10 @@
 import pandas as pd
-from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api, _holidays_api, _historical_api
+from nseazy._helpers import _base_api_url, _equity_quote_api, _derivative_quote_api, _holidays_api, _historical_api,_lot_details_url
 from nseazy._instruments import _validate_symbol
-from nseazy._generate_request import _fetch_data
+from nseazy._generate_request import _fetch_data, _fetch_url
 from nseazy._validators import _validate_vkwargs_dict, _check_kwargs, _checkDateFormat
 from datetime import date,timedelta
+import re
 
 def nse_quote(symbol,section=""):
     symbol, isDerivative = _validate_symbol(symbol)
@@ -78,6 +79,27 @@ def historical_data(symbol,series,start_date,end_date):
     rawHistorical_dp.columns = ['Date', 'Open', 'High','Low','Close','Volume']
     final = rawHistorical_dp.reindex(index=rawHistorical_dp.index[::-1]).set_index('Date')
     return final
+
+def nse_get_fno_lot_sizes(symbol="all",mode="list"):
+    if(mode=="list"):
+        s=_fetch_url(_lot_details_url)
+        res_dict = {}
+        for line in s.split('\n'):
+          if line != '' and re.search(',', line) and (line.casefold().find('symbol') == -1):
+              (code, name) = [x.strip() for x in line.split(',')[1:3]]
+              res_dict[code] = int(name)
+        if(symbol=="all"):
+            return res_dict
+        if(symbol!=""):
+            return res_dict[symbol.upper()]
+
+    if(mode=="pandas"):
+        payload = pd.read_csv(_lot_details_url)
+        if(symbol=="all"):
+            return payload
+        else:
+            payload = payload[(payload.iloc[:, 1] == symbol.upper())]
+            return payload
 
 def _get_quote_parameter():
     vkwargs = {

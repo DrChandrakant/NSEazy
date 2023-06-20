@@ -30,6 +30,8 @@ def get_cookies(_base_api_url):
 
 _base_api_url = "https://www.nseindia.com/"
 
+_lot_details_url="https://archives.nseindia.com/content/fo/fo_mktlots.csv"
+
 _equity_quote_api = "api/quote-equity?symbol="
 
 _derivative_quote_api = 'api/quote-derivative?symbol='

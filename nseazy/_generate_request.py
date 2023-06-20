@@ -9,3 +9,7 @@ if(method is True):
         session = requests.Session()
         rawData = session.get(api_url,headers=_headers,cookies=_cookies).json()
         return rawData
+
+def _fetch_url(api_url):
+    rawData = requests.get(api_url).text
+    return rawData

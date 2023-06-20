@@ -32,5 +32,5 @@ setuptools.setup(name='nseazy',
                    'Topic :: Scientific/Engineering :: Visualization',
                    'Topic :: Scientific/Engineering :: Information Analysis',
                    ],
-      keywords=['finance','candlestick','ohlc','market','investing','technical analysis'],
+      keywords=['finance','candlestick','ohlc','market','investing','technical analysis', national stock exchange of india],
       )

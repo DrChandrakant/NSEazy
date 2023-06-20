@@ -36,4 +36,4 @@ if __name__ == "__main__":
         v_str1=args.pr_v, 
         v_str2=args.in_v
     )
-    print(test_tag.format('pr{}maint'.format(outcome)))
+    print(test_tag.format('pr{}main'.format(outcome)))

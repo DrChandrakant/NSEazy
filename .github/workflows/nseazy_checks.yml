@@ -65,8 +65,8 @@ jobs:
       - name: Fetch base and head on PR
         if: ${{ github.event.pull_request.base.sha }}
         run: |
-          git fetch origin master ${{ github.event.pull_request.base.sha }}
-          git fetch origin master ${{ github.event.pull_request.head.sha }}
+          git fetch origin main ${{ github.event.pull_request.base.sha }}
+          git fetch origin main ${{ github.event.pull_request.head.sha }}
 
       - name: Check that Pull Request includes updating the Version
         run: |

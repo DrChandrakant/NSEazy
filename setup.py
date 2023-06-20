@@ -1,10 +1,19 @@
 import setuptools
 
+pkg_location = 'src'
+pkg_name     = 'nseazy'
+
+vfile = './'+pkg_name+'/_version.py'
+
+vers = {}
+with open(vfile) as f:
+   exec(f.read(), {}, vers)
+
 with open("README.md", "r") as fh:
     long_description = fh.read()
 
-setuptools.setup(name='nseazy',
-      version='0.0.1b5',
+setuptools.setup(name=pkg_name,
+      version=vers['__version__'],
       author='Dr Chandrakant',
       author_email='nseazy-users@python.org',
       maintainer_email='DrChandrakant.github@gmail.com',

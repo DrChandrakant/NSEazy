@@ -1,3 +1,6 @@
+[![nseazy Checks](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml/badge.svg?branch=master)](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml)
+
+
 # NSEazy
 NSEazy Is A Python Library To Get Publicly Available Data NSE India and NIFTY Indices
 

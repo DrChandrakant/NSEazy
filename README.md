@@ -1,3 +1,6 @@
+[![nseazy Checks](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml/badge.svg?branch=master)](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml)
+
+
 # NSEazy
 NSEazy Is A Python Library To Get Publicly Available Data NSE India and NIFTY Indices
 
@@ -104,3 +107,14 @@ Details on how to call the new API can be found below under **[Basic Usage]()**,
 I am very interested to hear from you regarding what you think of the new NSE API `nseazy`, plus any suggestions you may have for improvement.  You can reach me at **DrChandrakant.github@gmail.com**  or, if you prefer, provide feedback or a ask question on our **[issues page.](https://github.com/DrChandrakant/NSEazy/issues/new/choose)**
 
 ---
+Main Features:
+=============
+
+* Getting live quotes for stocks using stock codes.
+* Return data in both json and python dict and list formats.
+* Getting quotes for all the indices traded in NSE, e.g CNX NIFTY, BANKNIFTY etc.
+* Getting list of top losers.
+* Getting list of top gainers.
+* Helper APIs to check whether a given stock code or index code is correct.
+* Getting list of all indices and stocks.
+* Cent percent unittest coverage.

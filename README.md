@@ -1,5 +1,8 @@
 [![NSEazy Checks](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml/badge.svg?branch=main)](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml)
 [![pypi](https://img.shields.io/pypi/v/nseazy.svg)](https://pypi.python.org/pypi/nseazy)
+[![python](https://img.shields.io/pypi/pyversions/nseazy.svg)](https://pypi.python.org/pypi/nseazy)
+[![License: MIT](https://badgen.net/badge/license/MIT/blue)](https://opensource.org/licenses/MIT)
+
 
 # NSEazy
 NSEazy Is A Python Library To Get Publicly Available Data NSE India and NIFTY Indices

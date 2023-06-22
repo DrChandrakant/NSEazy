@@ -1,4 +1,5 @@
 [![NSEazy Checks](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml/badge.svg?branch=main)](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml)
+[![pypi](https://img.shields.io/pypi/v/nseazy.svg)](https://pypi.python.org/pypi/nseazy)
 
 
 # NSEazy

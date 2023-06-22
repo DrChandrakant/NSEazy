@@ -1,4 +1,4 @@
-[![NSEazy Checks](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml/badge.svg?branch=master)](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml)
+[![NSEazy Checks](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml/badge.svg?branch=main)](https://github.com/DrChandrakant/NSEazy/actions/workflows/nseazy_checks.yml)
 
 
 # NSEazy
